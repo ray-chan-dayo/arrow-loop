@@ -100,35 +100,10 @@ export default function App() {
   }, [board, completed, direction, message, position, start, started, status]);
 
   useEffect(() => {
-    const onKeyDown = (event) => {
-      if (event.key === "q" || event.key === "Q" || event.key === "x" || event.key === "X") {
-        event.preventDefault();
-        undo();
-        return;
-      }
-
-      if (event.key === "r" || event.key === "R") {
-        event.preventDefault();
-        reset();
-        return;
-      }
-
-      const nextDirection = DIRECTIONS[event.key];
-
-      if (!nextDirection) {
-        return;
-      }
-
-      event.preventDefault();
-      move(nextDirection);
-    };
-
-    window.addEventListener("keydown", onKeyDown);
-
-    return () => {
-      window.removeEventListener("keydown", onKeyDown);
-    };
-  }, [move, undo, reset]);
+    const handler = e => { const d = DIRECTIONS[e.key]; if (d) { e.preventDefault(); move(d); } };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [move]);
 
   const undo = () => {
     const previous = history.at(-1); if (!previous) return;
