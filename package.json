@@ -1,5 +1,5 @@
 {
-  "name": "arrow-loop-rebuilt-undo",
+  "name": "arrow-loop",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -9,11 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@tailwindcss/vite": "latest",
     "@vitejs/plugin-react": "latest",
+    "vite": "latest",
     "react": "latest",
-    "react-dom": "latest",
-    "tailwindcss": "latest",
-    "vite": "latest"
-  }
+    "react-dom": "latest"
+  },
+  "devDependencies": {}
 }
